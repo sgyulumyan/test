@@ -24,6 +24,12 @@
         <div :class="isUrl('reports') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Reports</div>
       </Link>
     </div>
+    <div class="mb-4">
+      <Link class="group flex items-center py-3" href="/tests">
+        <icon name="printer" class="mr-2 w-4 h-4" :class="isUrl('test') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
+        <div :class="isUrl('tests') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Tests</div>
+      </Link>
+    </div>
   </div>
 </template>
 

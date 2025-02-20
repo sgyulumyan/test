@@ -7,6 +7,7 @@ use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -127,6 +128,34 @@ Route::delete('contacts/{contact}', [ContactsController::class, 'destroy'])
 
 Route::put('contacts/{contact}/restore', [ContactsController::class, 'restore'])
     ->name('contacts.restore')
+    ->middleware('auth');
+
+Route::get('tests', [TestController::class, 'index'])
+    ->name('tests')
+    ->middleware('auth');
+
+Route::get('tests/create', [TestController::class, 'create'])
+    ->name('tests.create')
+    ->middleware('auth');
+
+Route::post('tests', [TestController::class, 'store'])
+    ->name('tests.store')
+    ->middleware('auth');
+
+Route::get('tests/{contact}/edit', [TestController::class, 'edit'])
+    ->name('contacts.edit')
+    ->middleware('auth');
+
+Route::put('tests/{contact}', [TestController::class, 'update'])
+    ->name('tests.update')
+    ->middleware('auth');
+
+Route::delete('tests/{contact}', [TestController::class, 'destroy'])
+    ->name('tests.destroy')
+    ->middleware('auth');
+
+Route::put('tests/{contact}/restore', [TestController::class, 'restore'])
+    ->name('tests.restore')
     ->middleware('auth');
 
 // Reports
