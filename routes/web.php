@@ -142,21 +142,32 @@ Route::post('tests', [TestController::class, 'store'])
     ->name('tests.store')
     ->middleware('auth');
 
-Route::get('tests/{contact}/edit', [TestController::class, 'edit'])
-    ->name('contacts.edit')
+Route::get('tests/{test}/edit', [TestController::class, 'edit'])
+    ->name('tests.edit')
     ->middleware('auth');
 
-Route::put('tests/{contact}', [TestController::class, 'update'])
+Route::put('tests/{test}', [TestController::class, 'update'])
     ->name('tests.update')
     ->middleware('auth');
 
-Route::delete('tests/{contact}', [TestController::class, 'destroy'])
+Route::delete('tests/{test}', [TestController::class, 'destroy'])
     ->name('tests.destroy')
     ->middleware('auth');
 
-Route::put('tests/{contact}/restore', [TestController::class, 'restore'])
-    ->name('tests.restore')
+Route::get('tests/generate', [TestController::class, 'generate'])
+    ->name('tests.generate')
     ->middleware('auth');
+
+Route::get('tests/clear', [TestController::class, 'clear'])
+    ->name('tests.clear')
+    ->middleware('auth');
+
+
+Route::get('/tests/google-sheet-url', [TestController::class, 'setGoogleSheetUrl'])->name('tests.googleSheetUrl');    
+Route::post('/tests/google-sheet-url', [TestController::class, 'updateGoogleSheetUrl'])->name('tests.googleSheetUrlUpdate');
+Route::get('/api/settings/google_sheet_url', function () {
+    return response()->json(['value' => \App\Models\Settings::getValue('google_sheet_url')]);
+});
 
 // Reports
 
